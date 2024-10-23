@@ -1,0 +1,1053 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CreateVendorsOnSAP" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Type" Type="InArgument(x:String)" />
+    <x:Property Name="DetailsToChange" Type="InArgument(x:String)" />
+    <x:Property Name="Company_Code" Type="InArgument(x:String)" />
+    <x:Property Name="Account_Group" Type="InArgument(x:String)" />
+    <x:Property Name="Title" Type="InArgument(x:String)" />
+    <x:Property Name="Name" Type="InArgument(x:String)" />
+    <x:Property Name="SearchTerm" Type="InArgument(x:String)" />
+    <x:Property Name="Country" Type="InArgument(x:String)" />
+    <x:Property Name="Street" Type="InArgument(x:String)" />
+    <x:Property Name="HouseNumber" Type="InArgument(x:String)" />
+    <x:Property Name="City" Type="InArgument(x:String)" />
+    <x:Property Name="State" Type="InArgument(x:String)" />
+    <x:Property Name="Reconcililation_Acc" Type="InArgument(x:String)" />
+    <x:Property Name="Planning_Group" Type="InArgument(x:String)" />
+    <x:Property Name="TermOfPayment" Type="InArgument(x:String)" />
+    <x:Property Name="Corporate_Group" Type="InArgument(x:String)" />
+    <x:Property Name="PostalCode" Type="InArgument(x:String)" />
+    <x:Property Name="out_Status" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Vendor_Number" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1186.6666666666667,11361.333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CreateVendorsOnSAP_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Core.Activities.SAP</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Exceptions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CreateVendorsOnSAP" sap:VirtualizedContainerService.HintSize="1196.6666666666667,11296.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Default="False" Name="VendorsExist" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message-Creating Vendors On Sap Started" sap:VirtualizedContainerService.HintSize="1134.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Creating Vendors Started&quot;]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1134.6666666666667,10807.333333333334" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <TryCatch.Try>
+        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: SAP Easy Access" sap:VirtualizedContainerService.HintSize="1096,10536" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1062,10198.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="VendorsNumber" />
+                  <Variable x:TypeArguments="x:String" Name="out_vendorNumber" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1000,244.66666666666666" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,132.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'OkCodeField okcd'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="NTypeInto_17" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="/NFK01[k(Enter)]" Version="V3">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable DesignTimeRectangle="72, 69, 220, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='tbar[0]/okcd' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/okcd' /&gt;" Guid="11e7d524-6919-4699-9cc5-ea94ea8745a7" ImageBase64="" InformativeScreenshot="b8ed087d89bd326fe9a73385397a1295.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='SAP Easy Access' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="e8079210-933d-4e61-ae9a-922dc5eac89f" SearchSteps="Selector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                        <uix:NTypeInto.VerifyOptions>
+                          <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                            <uix:VerifyExecutionTypeIntoOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionTypeIntoOptions.Retry>
+                            <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                          </uix:VerifyExecutionTypeIntoOptions>
+                        </uix:NTypeInto.VerifyOptions>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uix:NTypeInto>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                </ui:CommentOut>
+                <uix:NSAPCallTransaction DisplayName="Call Transaction" sap:VirtualizedContainerService.HintSize="1000,57.333333333333336" sap2010:WorkflowViewState.IdRef="NSAPCallTransaction_1" Transaction="FK01" Version="V3" />
+                <uix:NCheckState DisplayName="Check App State - Checking TCode" sap:VirtualizedContainerService.HintSize="1000,758" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NCheckState.IfExists>
+                    <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,263.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,172.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Creating vendor Account&quot;]" />
+                    </Sequence>
+                  </uix:NCheckState.IfExists>
+                  <uix:NCheckState.IfNotExists>
+                    <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="496,504.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,179.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Creating vendor Account&quot;]" />
+                      <Assign DisplayName="Assign-The Status Vendors " sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_9">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[out_Status]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">Invalid TCode for creating vendor account</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Throw DisplayName="Throw - Throwing BRE if TCode is incorrect" Exception="[new BusinessRuleException(&quot;Invalid TCode&quot;)]" sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                    </Sequence>
+                  </uix:NCheckState.IfNotExists>
+                  <uix:NCheckState.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="15, 112, 1912, 46" DesignTimeScaleFactor="1.5" ElementType="Toolbar" FullSelectorArgument="&lt;sap id='titl' /&gt;" FuzzySelectorArgument="&lt;sap id='titl' check:text='Create Vendor:  Initial Screen' /&gt;" Guid="f69c731a-9108-4794-9e45-3ec29cac9b1a" InformativeScreenshot="cc379ec081778c9b4f184a9241413ac4.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor:  Initial Screen' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive" />
+                  </uix:NCheckState.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NCheckState>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Company Code'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[Company_Code]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="333, 321, 64, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/ctxtRF02K-BUKRS' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtRF02K-BUKRS' /&gt;" Guid="83c89e99-a04a-4962-8471-8a8a803be597" ImageBase64="" InformativeScreenshot="978db3baa32e0174b577a751a5b5c3f6.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor:  Initial Screen' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="21, 321, 298, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/lblRF02K-BUKRS' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/lblRF02K-BUKRS' check:text='Company Code' /&gt;" Guid="2c66bf2f-dd85-49cf-aa21-44697239749e" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Account group'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[Account_Group]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="333, 355, 64, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/ctxtRF02K-KTOKK' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtRF02K-KTOKK' /&gt;" Guid="3b1b68c7-d313-4101-ad89-a421103730e8" ImageBase64="" InformativeScreenshot="76a6fe16c26d319cdfe510e28af98fd6.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor:  Initial Screen' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="21, 355, 298, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/lblRF02K-KTOKK' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/lblRF02K-KTOKK' check:text='Account group' /&gt;" Guid="519d58d5-dfc9-4bde-9b68-80c307ca228c" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="d7dd4e61-5392-49ab-bebd-f6d4f5b4516e" ImageBase64="" InformativeScreenshot="4218a46aee53397017ed0aeb6d2a29f3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="b3fbb5d6-8cb8-4a3f-92ad-167c74f8b9f5" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NSelectItem DisplayName="Select Item 'Title'" sap:VirtualizedContainerService.HintSize="1000,191.33333333333334" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[Title]" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NSelectItem.Items>
+                    <scg:List x:TypeArguments="x:String" Capacity="5">
+                      <x:String>Company</x:String>
+                      <x:String>Dr.</x:String>
+                      <x:String>Mr.</x:String>
+                      <x:String>Ms.</x:String>
+                      <x:String xml:space="preserve"> </x:String>
+                    </scg:List>
+                  </uix:NSelectItem.Items>
+                  <uix:NSelectItem.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="307, 355, 428, 32" DesignTimeScaleFactor="1.5" ElementType="DropDown" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/cmbSZA1_D0100-TITLE_MEDI' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/cmbSZA1_D0100-TITLE_MEDI' /&gt;" Guid="5dcf4cea-8014-44da-8354-862b897d5492" ImageBase64="" InformativeScreenshot="2f1663a52fee0c5207a22fed2f47147f.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 355, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblSZA1_D0100-TITLE_MEDI' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblSZA1_D0100-TITLE_MEDI' check:text='Title' /&gt;" Guid="ba405469-8c5b-415f-b0b1-ddcf3ae29a66" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NSelectItem.Target>
+                </uix:NSelectItem>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[Name]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="307, 389, 532, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-NAME1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-NAME1' /&gt;" Guid="69c0ef6b-6146-466a-bd11-dee46a84b1ee" ImageBase64="" InformativeScreenshot="de825401e53e6d87946375346000ff14.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 389, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-NAME1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-NAME1' check:text='Name' /&gt;" Guid="ae9f8a7b-f634-48b5-9b8c-a47a02ff5fcc" SearchSteps="FuzzySelector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Search term 1/2'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[SearchTerm]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="307, 525, 272, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-SORT1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-SORT1' /&gt;" Guid="72fda943-d8d6-4fc6-b82a-23483a2fc3e8" ImageBase64="" InformativeScreenshot="6a38ecd10b157bcbae5b8f8a2bce16b3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 525, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-SORT1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-SORT1' check:text='Search term 1/2' /&gt;" Guid="6fc38697-b87a-4299-8368-9f63762ceaef" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Street/House number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_9" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[Street]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="307, 627, 428, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-STREET' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-STREET' /&gt;" Guid="a3c8f5f1-ed8a-450d-9121-fb7596643a7b" ImageBase64="" InformativeScreenshot="d552c1f94c3179f4b2f27cb11e5b7762.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 627, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-STREET' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-STREET' check:text='Street/House number' /&gt;" Guid="c0bc8465-512b-498b-aa32-9b21ff857a1f" SearchSteps="FuzzySelector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Street/House number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_6" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[HouseNumber]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="736, 627, 103, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-HOUSE_NUM1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-HOUSE_NUM1' /&gt;" Guid="c9e51b34-0285-4326-b069-26bb9f43742e" ImageBase64="" InformativeScreenshot="e6c0213c9fecf28a32f353f229845a73.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 627, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-STREET' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-STREET' check:text='Street/House number' /&gt;" Guid="0ba0508e-ff4a-4c84-926d-4584edfc82d5" SearchSteps="FuzzySelector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Postal Code/City'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_7" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[PostalCode]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="307, 661, 142, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-POST_CODE1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-POST_CODE1' /&gt;" Guid="4be460ea-f50b-4aa3-b321-ef62f808d936" ImageBase64="" InformativeScreenshot="697387a6372e66a92b39cf7d71493e92.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 661, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtG_CITY_POSTCODE1_LABEL' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtG_CITY_POSTCODE1_LABEL' check:text='Postal Code/City' /&gt;" Guid="4b82caef-ba38-43a8-859d-2b19288db9dd" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Postal Code/City'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_10" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[City]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="450, 661, 532, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-CITY1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-CITY1' /&gt;" Guid="983e8cd1-ea6a-485e-8659-458b08b68944" ImageBase64="" InformativeScreenshot="5b1b4a5603ddf10daf4c91f65e17ce8e.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 661, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtG_CITY_POSTCODE1_LABEL' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtG_CITY_POSTCODE1_LABEL' check:text='Postal Code/City' /&gt;" Guid="eb0e16ca-c311-4417-abd2-f4f0974c3bf0" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Country'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_8" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[Country]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="307, 695, 51, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/ctxtADDR1_DATA-COUNTRY' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/ctxtADDR1_DATA-COUNTRY' /&gt;" Guid="fca238b5-deb0-42a9-b2cc-ed8a6e13ae72" ImageBase64="" InformativeScreenshot="80b9d5bedf263aa2524a8a83086925ef.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 695, 168, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-COUNTRY' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-COUNTRY' check:text='Country' /&gt;" Guid="ac8943b8-1f74-4b45-b783-9351a983ca9b" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Region'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_11" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[State]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="749, 695, 51, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/ctxtADDR1_DATA-REGION' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/ctxtADDR1_DATA-REGION' /&gt;" Guid="4dc7c01e-4a00-4ad4-94d5-438342e79348" ImageBase64="" InformativeScreenshot="b82657876202ee6248c07c932dd76d1d.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="606, 695, 142, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-REGION' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-REGION' check:text='Region' /&gt;" Guid="2312ffd2-53ec-475a-bd34-f1519d8c7858" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="d7dd4e61-5392-49ab-bebd-f6d4f5b4516e" ImageBase64="" InformativeScreenshot="4218a46aee53397017ed0aeb6d2a29f3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="b3fbb5d6-8cb8-4a3f-92ad-167c74f8b9f5" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NCheckState DisplayName="Check App State 'Vendors found'" sap:VirtualizedContainerService.HintSize="1000,913.3333333333334" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NCheckState.IfExists>
+                    <Sequence DisplayName="Target appears-with address exist pop up" sap:VirtualizedContainerService.HintSize="496,660" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Continue (Enter)'" sap:VirtualizedContainerService.HintSize="434,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable DesignTimeRectangle="709, 174, 40, 31" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="01b37be6-0fc5-48df-8121-91d916895b18" ImageBase64="" InformativeScreenshot="62855f1e0f0470db4fca6e14fa4dea5c.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Information' idx='*' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="752, 174, 40, 31" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[1]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[1]' /&gt;" Guid="90abc478-ee6f-4e93-8f00-c5dedefb510a" SearchSteps="Selector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NClick.Target>
+                        <uix:NClick.VerifyOptions>
+                          <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                            <uix:VerifyExecutionOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionOptions.Retry>
+                            <uix:VerifyExecutionOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionOptions.Timeout>
+                          </uix:VerifyExecutionOptions>
+                        </uix:NClick.VerifyOptions>
+                      </uix:NClick>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Continue (Enter)'" sap:VirtualizedContainerService.HintSize="434,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_14" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable DesignTimeRectangle="973, 446, 40, 31" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="af92b91d-ca80-44e8-a642-97213741eae4" ImageBase64="" InformativeScreenshot="56b46c6afce49d0edfa8900505a2fde6.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Vendor: Display Duplicates' idx='*' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="1016, 446, 136, 31" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[2]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[2]' check:text='Vendor' /&gt;" Guid="857d690d-a0b5-48c3-999c-96388c7b1e9b" SearchSteps="Selector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NClick.Target>
+                        <uix:NClick.VerifyOptions>
+                          <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                            <uix:VerifyExecutionOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionOptions.Retry>
+                            <uix:VerifyExecutionOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionOptions.Timeout>
+                          </uix:VerifyExecutionOptions>
+                        </uix:NClick.VerifyOptions>
+                      </uix:NClick>
+                      <Assign DisplayName="Assign-vendors Address exist" sap:VirtualizedContainerService.HintSize="434,110.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[VendorsExist]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </uix:NCheckState.IfExists>
+                  <uix:NCheckState.IfNotExists>
+                    <Sequence DisplayName="Target does not appear-with address exist pop uo" sap:VirtualizedContainerService.HintSize="450,107.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </uix:NCheckState.IfNotExists>
+                  <uix:NCheckState.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="72, 49, 662, 32" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/txtMESSTXT1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/txtMESSTXT1' check:text='Vendors found with same address; check' /&gt;" Guid="6bb6a84c-dca7-4194-be12-8d4d11436b15" ImageBase64="" InformativeScreenshot="458a4a11c8385afd7c8eaf76efca41a9.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Information' idx='*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                  </uix:NCheckState.Target>
+                </uix:NCheckState>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Corporate Group'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_12" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[Corporate_Group]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="671, 355, 142, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/txtLFA1-KONZS' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/txtLFA1-KONZS' /&gt;" Guid="5baae09c-94a7-4b9a-b335-2280a247e55a" ImageBase64="" InformativeScreenshot="1bf80084959a1d77ae73979897d1fe41.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Control' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="463, 355, 207, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/lblLFA1-KONZS' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/lblLFA1-KONZS' check:text='Corporate Group' /&gt;" Guid="827e928c-21f7-4421-a12e-76820b7a26d3" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="d7dd4e61-5392-49ab-bebd-f6d4f5b4516e" ImageBase64="" InformativeScreenshot="4218a46aee53397017ed0aeb6d2a29f3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="b3fbb5d6-8cb8-4a3f-92ad-167c74f8b9f5" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="d7dd4e61-5392-49ab-bebd-f6d4f5b4516e" ImageBase64="" InformativeScreenshot="4218a46aee53397017ed0aeb6d2a29f3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="b3fbb5d6-8cb8-4a3f-92ad-167c74f8b9f5" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="d7dd4e61-5392-49ab-bebd-f6d4f5b4516e" ImageBase64="" InformativeScreenshot="4218a46aee53397017ed0aeb6d2a29f3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="b3fbb5d6-8cb8-4a3f-92ad-167c74f8b9f5" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1000,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,330.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="354,246" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" Shortcuts="[d(hk)][k(Enter)][u(hk)][d(hk)][k(enter)][u(hk)]" Version="V3">
+                        <uix:NKeyboardShortcuts.VerifyOptions>
+                          <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                            <uix:VerifyExecutionOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionOptions.Retry>
+                            <uix:VerifyExecutionOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionOptions.Timeout>
+                          </uix:VerifyExecutionOptions>
+                        </uix:NKeyboardShortcuts.VerifyOptions>
+                      </uix:NKeyboardShortcuts>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:CommentOut>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Recon. account'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_13" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[Reconcililation_Acc]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="242, 355, 142, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/ctxtLFB1-AKONT' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtLFB1-AKONT' /&gt;" Guid="61154207-239e-4ef5-8bbf-7483852a2634" ImageBase64="" InformativeScreenshot="87896ef306f3dca17e98d30c51a9eb49.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Accounting information Accounting' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 355, 207, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/lblLFB1-AKONT' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/lblLFB1-AKONT' check:text='Recon. account' /&gt;" Guid="c4be1fff-944f-4a74-a000-a96e1199e308" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Cash mgmnt group'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_14" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[Planning_Group]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="697, 423, 142, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/ctxtLFB1-FDGRV' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtLFB1-FDGRV' /&gt;" Guid="7ce14124-4afe-40e1-80cb-3ee1bfdb277b" ImageBase64="" InformativeScreenshot="a82aafe3c1024b760171137ce35a790b.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Accounting information Accounting' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="450, 423, 246, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/lblLFB1-FDGRV' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/lblLFB1-FDGRV' check:text='Cash mgmnt group' /&gt;" Guid="3f449b92-7dfa-40f6-a60b-312817101a29" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="d7dd4e61-5392-49ab-bebd-f6d4f5b4516e" ImageBase64="" InformativeScreenshot="4218a46aee53397017ed0aeb6d2a29f3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="b3fbb5d6-8cb8-4a3f-92ad-167c74f8b9f5" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Payt Terms'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_15" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="[TermOfPayment]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="242, 355, 64, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/ctxtLFB1-ZTERM' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtLFB1-ZTERM' /&gt;" Guid="fca9a3a5-734f-4a4c-b505-3e6fa0d76ebb" ImageBase64="" InformativeScreenshot="9dadfbb8db2c73d785ccf57cbddf5e51.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Payment transactions Accounting' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="34, 355, 207, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/lblLFB1-ZTERM' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/lblLFB1-ZTERM' check:text='Payt Terms' /&gt;" Guid="5a4e61d8-93fd-4bd9-abf6-67313771cdf2" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="d7dd4e61-5392-49ab-bebd-f6d4f5b4516e" ImageBase64="" InformativeScreenshot="4218a46aee53397017ed0aeb6d2a29f3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="b3fbb5d6-8cb8-4a3f-92ad-167c74f8b9f5" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="d7dd4e61-5392-49ab-bebd-f6d4f5b4516e" ImageBase64="" InformativeScreenshot="4218a46aee53397017ed0aeb6d2a29f3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="b3fbb5d6-8cb8-4a3f-92ad-167c74f8b9f5" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'WH Tax Country'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_16" InteractionMode="Simulate" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Text="005" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="372, 321, 51, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/subWT_WITS:SAPMFWTV:0610/ctxtLFB1-QLAND' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subWT_WITS:SAPMFWTV:0610/ctxtLFB1-QLAND' /&gt;" Guid="43c5d6dc-5b3c-4390-b553-92937773090f" ImageBase64="" InformativeScreenshot="fc672f6e1e3a56fb629138e689687b2a.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Withholding tax Accounting' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="21, 321, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subWT_WITS:SAPMFWTV:0610/lblLFB1-QLAND' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subWT_WITS:SAPMFWTV:0610/lblLFB1-QLAND' check:text='WH Tax Country' /&gt;" Guid="0d38cda3-f23e-4868-9960-664cc60deba2" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="d7dd4e61-5392-49ab-bebd-f6d4f5b4516e" ImageBase64="" InformativeScreenshot="4218a46aee53397017ed0aeb6d2a29f3.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="b3fbb5d6-8cb8-4a3f-92ad-167c74f8b9f5" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Yes'" sap:VirtualizedContainerService.HintSize="1000,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="85, 218, 155, 34" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='usr/btnSPOP-OPTION1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/btnSPOP-OPTION1' check:text='Yes' /&gt;" Guid="cac25235-9b5f-46d8-8a7a-58cabd514faf" ImageBase64="" InformativeScreenshot="f940c720e37261aedcb92993bd399647.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Last data screen reached' idx='*' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="85, 117, 467, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/txtSPOP-TEXTLINE1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/txtSPOP-TEXTLINE1' check:text='Should the data be' /&gt;" Guid="7f27eaf7-b071-4212-b1da-9a86012d7863" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NGetText DisplayName="Get Text 'Vendor 0000000882'" sap:VirtualizedContainerService.HintSize="1000,191.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" TextString="[VendorsNumber]" Version="V3">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="19, 980, 1887, 41" DesignTimeScaleFactor="1.5" FullSelectorArgument="&lt;sap id='sbar/pane[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='sbar/pane[0]' /&gt;" Guid="54d92217-b15d-474f-9372-e211192f482c" ImageBase64="" InformativeScreenshot="cb5346b1211a3de06b69f3ed64784adf.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Create Vendor:  Initial Screen' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive" />
+                  </uix:NGetText.Target>
+                </uix:NGetText>
+                <Assign DisplayName="Assign-Fetching the vendors Number from this " sap:VirtualizedContainerService.HintSize="1000,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[out_vendorNumber]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(VendorsNumber, "\d{10}").Value]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign-Adding the Vendors Number  " sap:VirtualizedContainerService.HintSize="1000,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[out_Vendor_Number]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[out_vendorNumber]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[VendorsExist]" DisplayName="checking If vendors Address Already Exist " sap:VirtualizedContainerService.HintSize="1000,557.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If.Then>
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,192.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Assign-The Status Vendors " sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_5">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[out_Status]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["Vendors Added Successfull with Existing Same Address"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="496,192.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Assign-The Status Vendors " sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[out_Status]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["Vendors Added Successfull"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Cancel (F12)'" sap:VirtualizedContainerService.HintSize="1000,222.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="11e54514-d512-4b6b-8b69-6a9eef0afa57" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="464, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[12]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[12]' /&gt;" Guid="62346d13-9790-4c1a-8fcc-f8ec879b596b" ImageBase64="" InformativeScreenshot="e5458bdece59581511c960faaecfe8f6.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="425, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[15]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[15]' /&gt;" Guid="08c71df4-6449-40a9-9105-b71e14d31e5a" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="-11, -11, 1942, 1030" FilePath="C:\Program Files (x86)\SAP\FrontEnd\SapGui\saplogon.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIKSURBVGhD7ZhLSwJRGIaNVv2OFhH9A3OhNUVtgpb9hMBKXZWl2KJVi+7RzaAiNZ0uELXIxURhLlqUtXDZKgq6gwTR4us7EyM2DnO6OHM4cYRnK+/z+c6r6ACAKp4RAqwRAqwRAqwRAqwRAqz5HwJNQ3IXssYbzSG5WxMYRYAj3pFdFKjnVWBXCm3WlVaIJ4EMuTzJzZsAqc22FJZrtfC8CaSl8Gdtvgjk8/ma9sjWlGcwBSwwCKqHXD6NtWnQh1cFrm/vognl8iESOwG7CK4eQ+fIDgokjQLrwdqUX17D8VR4A7vZUHLQEY6BeyBuFLiUjL7zemwVuH0sQOzgFCTfDLj8URRIGIUmFHfeKHQptgncPb/Cyl4WWn3T0Ni3AO7+uNkzUNx5GrYJbCpnIPVOgrNnDsPHzMJ/2XkalgvcYG1W9rPg8U7g5RfNLm+48zQsFyDh2wIz0Ng7XxLeUMBw52lYJkA6T2rj6SGXJ53XalMW3nTnaTjuX17Xj3JX+dThBaSU84oxnlSgxY+X9y3RHljTnafhwFc1XmjMiR+x0ztbOfBhdQWW1a03qQ1152mov4XcweSoO7ih7nLFwPcj37QmtfnWztNg9WPu2ztPg4XAj3aehp0Cv9p5GnYK/Grnadgh8Kedp6EJWPe3SkgetuLyGqoAzwgB1ggB1ggB1ggB1ggB1nAuAFUfxIfXPEuuE9oAAAAASUVORK5CYII=" InformativeScreenshot="bf36275318435738adc984d2e2f11893.png" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='SAP Easy Access' /&gt;" Title="SAP Easy Access" />
+          </uix:NApplicationCard.TargetApp>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </uix:NApplicationCard>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1100.6666666666667,23.333333333333332" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Assign DisplayName="Assign-The Status Vendors " sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_Status]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["Creating of Vendor Record Unsuccessfull"]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1134.6666666666667,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="577.3333333333334,302.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch DisplayName="Try Catch-For Handling the Exception Thrown While Creating Vendor Account" sap:VirtualizedContainerService.HintSize="515.3333333333334,218" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="481.3333333333333,23.333333333333332" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Assign DisplayName="Assign-The Status Vendors " sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[In_TransactionItem(18)]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">["Creating of Vendor Record Unsuccessfull"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:LogMessage DisplayName="Log Message-Creating Vendors On Sap Started" sap:VirtualizedContainerService.HintSize="1134.6666666666667,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Creating Vendors Ended&quot;]" />
+  </Sequence>
+</Activity>

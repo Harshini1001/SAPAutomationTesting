@@ -1,0 +1,32 @@
+﻿[
+	{
+		"Name": "SAPUserID",
+		"Asset": "SAPUserID",
+		"OrchestratorAssetFolder": "SAPTestAutomation",
+		"Description": "this is SAP User ID"
+	},
+	{
+		"Name": "SAPClient",
+		"Asset": "SAPClient",
+		"OrchestratorAssetFolder": "SAPTestAutomation",
+		"Description": "SAP Client Detail"
+	},
+	{
+		"Name": "SAPLanguage",
+		"Asset": "SAPLanguage",
+		"OrchestratorAssetFolder": "SAPTestAutomation",
+		"Description": "SAP Language Details"
+	},
+	{
+		"Name": "SAPLoganPath",
+		"Asset": "SAPLoganPath",
+		"OrchestratorAssetFolder": "SAPTestAutomation",
+		"Description": "SAP Logan Path Details"
+	},
+	{
+		"Name": "SAPConnectionName",
+		"Asset": "SAPConnectionName",
+		"OrchestratorAssetFolder": "SAPTestAutomation", 
+		"Description": "SAP ConnectionName Details"
+	}
+]

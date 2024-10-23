@@ -1,0 +1,9 @@
+{
+  "issueKeyTestcaseValues": {},
+  "testManagerBasePath": "https://cloud.uipath.com/avaaloummpvm/DefaultTenant/testmanager_",
+  "defaultProject": {
+    "id": "e2b8428a-8246-0000-2a34-0b475f6179e0",
+    "name": "SAPTestmanagerDemo",
+    "key": "SAP"
+  }
+}

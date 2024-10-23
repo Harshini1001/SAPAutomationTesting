@@ -1,0 +1,779 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="validateVendorsDetails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Status" Type="OutArgument(x:String)" />
+    <x:Property Name="VendorNumber" Type="InArgument(x:String)" />
+    <x:Property Name="CompanyCode" Type="InArgument(x:String)" />
+    <x:Property Name="DetailsToBeAdded" Type="InArgument(x:String)" />
+    <x:Property Name="Country" Type="InArgument(x:String)" />
+    <x:Property Name="SearchTerm" Type="InArgument(x:String)" />
+    <x:Property Name="Street" Type="InArgument(x:String)" />
+    <x:Property Name="HouseNumber" Type="InArgument(x:String)" />
+    <x:Property Name="City" Type="InArgument(x:String)" />
+    <x:Property Name="State" Type="InArgument(x:String)" />
+    <x:Property Name="PostalCode" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:validateVendorsDetails.VendorNumber>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.VendorNumber>
+  <this:validateVendorsDetails.CompanyCode>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.CompanyCode>
+  <this:validateVendorsDetails.DetailsToBeAdded>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.DetailsToBeAdded>
+  <this:validateVendorsDetails.Country>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.Country>
+  <this:validateVendorsDetails.SearchTerm>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.SearchTerm>
+  <this:validateVendorsDetails.Street>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.Street>
+  <this:validateVendorsDetails.HouseNumber>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.HouseNumber>
+  <this:validateVendorsDetails.City>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.City>
+  <this:validateVendorsDetails.State>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.State>
+  <this:validateVendorsDetails.PostalCode>
+    <InArgument x:TypeArguments="x:String" />
+  </this:validateVendorsDetails.PostalCode>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1186.6666666666667,9981.333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>validateVendorsDetails_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="validateVendorsDetails" sap:VirtualizedContainerService.HintSize="1196.6666666666667,9916.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:List(x:String)" Name="statusList" />
+      <Variable x:TypeArguments="x:String" Name="variable1" />
+      <Variable x:TypeArguments="x:String" Name="valuesPresent" />
+      <Variable x:TypeArguments="x:String" Name="finalStatus" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message-Validate vendor Details" sap:VirtualizedContainerService.HintSize="1134.6666666666667,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Validate Vendor Details Started &quot;]" />
+    <Assign DisplayName="Assign-the List of data to validate" sap:VirtualizedContainerService.HintSize="1134.6666666666667,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[statusList]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)">[new List(Of String)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <TryCatch DisplayName="Try Catch-For Handling the Exception thrown While Validating The Record" sap:VirtualizedContainerService.HintSize="1134.6666666666667,9370.666666666666" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application: SAP Easy Access" sap:VirtualizedContainerService.HintSize="1096,9102.666666666666" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1062,8808.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="s:String[]" Name="detailsToBeUpdated" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NSAPCallTransaction DisplayName="Call Transaction" sap:VirtualizedContainerService.HintSize="1000,57.333333333333336" sap2010:WorkflowViewState.IdRef="NSAPCallTransaction_1" Transaction="FK03" Version="V3" />
+                <uix:NCheckState DisplayName="Check App State - Checking TCode" sap:VirtualizedContainerService.HintSize="1000,754" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" Version="V3">
+                  <uix:NCheckState.IfExists>
+                    <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,262" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,171.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;updating vendor Account&quot;]" />
+                    </Sequence>
+                  </uix:NCheckState.IfExists>
+                  <uix:NCheckState.IfNotExists>
+                    <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="496,502" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,178" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Invalid TCode&quot;]" />
+                      <Assign DisplayName="Assign-The Status Vendors " sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_7">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[Status]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">Invalid TCode for valdating vendor account</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Throw DisplayName="Throw - Throwing BRE if TCode is incorrect" Exception="[new BusinessRuleException(&quot;Invalid TCode&quot;)]" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                    </Sequence>
+                  </uix:NCheckState.IfNotExists>
+                  <uix:NCheckState.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="15, 112, 1912, 46" DesignTimeScaleFactor="1.5" ElementType="Toolbar" FullSelectorArgument="&lt;sap id='titl' /&gt;" FuzzySelectorArgument="&lt;sap id='titl' check:text='Display Vendor:  Initial Screen' /&gt;" Guid="b6d47345-9d30-41ba-b92d-905d10859095" InformativeScreenshot="ac50837b0185712b8de743117cf6c853.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor:  Initial Screen' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive" />
+                  </uix:NCheckState.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NCheckState>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Vendor'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,289.3333333333333" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="Simulate" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" Text="[VendorNumber]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="320, 287, 220, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/ctxtRF02K-LIFNR' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtRF02K-LIFNR' /&gt;" Guid="2f422c00-9e3e-4038-8156-068aabd24cf1" ImageBase64="" InformativeScreenshot="faf24ddd5f61da5b2e9238c125d6507e.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor:  Initial Screen' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="21, 287, 298, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/lblRF02K-LIFNR' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/lblRF02K-LIFNR' check:text='Vendor' /&gt;" Guid="8f91a389-cb97-48ae-ac09-54d7e8fbb0b4" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Company Code'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,289.3333333333333" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="Simulate" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" Text="[CompanyCode]" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="320, 321, 64, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/ctxtRF02K-BUKRS' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtRF02K-BUKRS' /&gt;" Guid="9dac4d99-1896-415f-adb5-9c3f427a69fa" ImageBase64="" InformativeScreenshot="5d868ae7a57a47f5f80c7e52aae0f164.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor:  Initial Screen' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="21, 321, 298, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/lblRF02K-BUKRS' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/lblRF02K-BUKRS' check:text='Company Code' /&gt;" Guid="531733c0-4a66-48c0-af1a-f3e6613e77f9" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                  <uix:NTypeInto.VerifyOptions>
+                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    </uix:VerifyExecutionTypeIntoOptions>
+                  </uix:NTypeInto.VerifyOptions>
+                </uix:NTypeInto>
+                <uix:NCheck Action="Check" DisplayName="Check/Uncheck 'Address'" sap:VirtualizedContainerService.HintSize="1000,190.66666666666666" sap2010:WorkflowViewState.IdRef="NCheck_1" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" Version="V3">
+                  <uix:NCheck.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="34, 423, 298, 32" DesignTimeScaleFactor="1.5" ElementType="CheckBox" FullSelectorArgument="&lt;sap id='usr/chkRF02K-D0110' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/chkRF02K-D0110' check:text='Address' /&gt;" Guid="3c668fd1-66f8-4131-83d6-ebb75ef32458" InformativeScreenshot="5c0ad51e6627a3c3c4da4c58edfec80e.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor:  Initial Screen' /&gt;" SearchSteps="Selector" Version="V3" Visibility="Interactive" />
+                  </uix:NCheck.Target>
+                </uix:NCheck>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Enter'" sap:VirtualizedContainerService.HintSize="1000,228" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="23, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="297ddc17-2733-4e4a-9128-5bb1236f69ce" ImageBase64="" InformativeScreenshot="b2974a176206508af9d6579ed49dd9f7.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor:  Initial Screen' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="296, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[423]' /&gt;" Guid="9ed26810-1998-4a85-8a81-6d8f698e9c17" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <Assign DisplayName="Assign-details to be validate" sap:VirtualizedContainerService.HintSize="1000,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="s:String[]">[detailsToBeUpdated]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="s:String[]">[DetailsToBeAdded.ToString.Split(",")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each-to loop through details of data to validate" sap:VirtualizedContainerService.HintSize="1000,6458" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[detailsToBeUpdated]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:String">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="608,6310.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[currentText.ToString.ToUpper.Equals(&quot;COUNTRY&quot;)]" DisplayName="check If country matched" sap:VirtualizedContainerService.HintSize="546,1193.3333333333333" sap2010:WorkflowViewState.IdRef="If_8">
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,921.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NGetText DisplayName="Get Text 'Country'" sap:VirtualizedContainerService.HintSize="450,190.66666666666666" sap2010:WorkflowViewState.IdRef="NGetText_8" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" TextString="[valuesPresent]" Version="V3">
+                                <uix:NGetText.Target>
+                                  <uix:TargetAnchorable DesignTimeRectangle="307, 695, 51, 32" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/ctxtADDR1_DATA-COUNTRY' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/ctxtADDR1_DATA-COUNTRY' /&gt;" Guid="bf06098a-d577-4380-80ef-b11938592737" ImageBase64="" InformativeScreenshot="eb3595205fe83a395ba7c02821dc8b50.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="34, 695, 168, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-COUNTRY' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-COUNTRY' check:text='Country' /&gt;" Guid="e4d34c26-dffa-4946-a223-4abe776250bb" SearchSteps="Selector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NGetText.Target>
+                              </uix:NGetText>
+                              <If Condition="[not Country.ToString.Equals(valuesPresent)]" DisplayName="check If country matched" sap:VirtualizedContainerService.HintSize="450,646" sap2010:WorkflowViewState.IdRef="If_9">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Then>
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_15" ItemToAppend="Country value is Incorrect" List="[statusList]" />
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_16" ItemToAppend="Country value is Correct" List="[statusList]" />
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,100.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                        <ui:IfElseIfV2 Condition="[currentText.ToString.ToUpper.Equals(&quot;SEARCH TERM1&quot;)]" DisplayName="Else if-check for Search term" sap:VirtualizedContainerService.HintSize="546,4925.333333333333" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
+                          <ui:IfElseIfV2.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,100.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </ui:IfElseIfV2.Else>
+                          <ui:IfElseIfV2.ElseIfs>
+                            <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currentText.ToString.ToUpper.Equals(&quot;STREET&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+                                <ui:IfElseIfBlock.Then>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,921.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NGetText DisplayName="Get Text 'Country'" sap:VirtualizedContainerService.HintSize="450,190.66666666666666" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" TextString="[valuesPresent]" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable DesignTimeRectangle="307, 627, 428, 32" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-STREET' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-STREET' /&gt;" Guid="402b6f77-b96f-45ee-b5ce-cfed76cf36b5" ImageBase64="" InformativeScreenshot="1674ac21e1e0a5e44ce46609d9ec1682.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="34, 627, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-STREET' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-STREET' check:text='Street/House number' /&gt;" Guid="fe24556a-70ce-4c39-a5fa-3b1b7d072305" SearchSteps="Selector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NGetText.Target>
+                                    </uix:NGetText>
+                                    <If Condition="[not Street.ToString.Equals(valuesPresent)]" DisplayName="check If " sap:VirtualizedContainerService.HintSize="450,646" sap2010:WorkflowViewState.IdRef="If_3">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_5" ItemToAppend="Street value is Incorrect" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_6" ItemToAppend="Street value is Correct" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </ui:IfElseIfBlock.Then>
+                              </ui:IfElseIfBlock>
+                              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currentText.ToString.ToUpper.Equals(&quot;HOUSE NUMBER&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_3">
+                                <ui:IfElseIfBlock.Then>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,921.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NGetText DisplayName="Get Text 'Country'" sap:VirtualizedContainerService.HintSize="450,190.66666666666666" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" TextString="[valuesPresent]" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable DesignTimeRectangle="736, 627, 103, 32" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-HOUSE_NUM1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-HOUSE_NUM1' /&gt;" Guid="02363cca-c84c-42d0-a5f7-3a92d99e8df0" ImageBase64="" InformativeScreenshot="863cae3b818e62078f4a4cb611c9b398.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="34, 627, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-STREET' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_KEYW-STREET' check:text='Street/House number' /&gt;" Guid="1aaa6122-10fc-43df-a189-d0d3edc5a15b" SearchSteps="Selector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NGetText.Target>
+                                    </uix:NGetText>
+                                    <If Condition="[Not HouseNumber.ToString.Equals(valuesPresent)]" sap:VirtualizedContainerService.HintSize="450,646" sap2010:WorkflowViewState.IdRef="If_4">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_7" ItemToAppend="House Number value is Incorrect" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_8" ItemToAppend="House Number value is Correct" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </ui:IfElseIfBlock.Then>
+                              </ui:IfElseIfBlock>
+                              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currentText.ToString.ToUpper.Equals(&quot;CITY&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_4">
+                                <ui:IfElseIfBlock.Then>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,323.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NGetText DisplayName="Get Text 'Country'" sap:VirtualizedContainerService.HintSize="354,190.66666666666666" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" TextString="[valuesPresent]" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable DesignTimeRectangle="450, 661, 532, 32" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-CITY1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-CITY1' /&gt;" Guid="b299e8bb-2cb0-4ca3-843b-b5a6ceca5644" ImageBase64="" InformativeScreenshot="5307ea2743d72724e0ffcdebd3699880.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="34, 661, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtG_CITY_POSTCODE1_LABEL' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtG_CITY_POSTCODE1_LABEL' check:text='Postal Code/City' /&gt;" Guid="0a62495c-cd72-4e3f-9d46-c90bf0256f97" SearchSteps="Selector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NGetText.Target>
+                                    </uix:NGetText>
+                                    <If Condition="[not City.ToString.Equals(valuesPresent)]" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="If_5">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,243.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,158.66666666666666" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_9" ItemToAppend="City value is Incorrect" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,243.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,158.66666666666666" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_10" ItemToAppend="City value is Correct" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </ui:IfElseIfBlock.Then>
+                              </ui:IfElseIfBlock>
+                              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currentText.ToString.ToUpper.Equals(&quot;STATE&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_5">
+                                <ui:IfElseIfBlock.Then>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,323.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NGetText DisplayName="Get Text 'Country'" sap:VirtualizedContainerService.HintSize="354,190.66666666666666" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" TextString="[valuesPresent]" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable DesignTimeRectangle="749, 695, 51, 32" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/ctxtADDR1_DATA-REGION' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/ctxtADDR1_DATA-REGION' /&gt;" Guid="95467300-59db-440b-9f0b-125e01e73dc0" ImageBase64="" InformativeScreenshot="ad0b15801d800d26f682a7a9b0684d2b.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="606, 695, 142, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-REGION' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-REGION' check:text='Region' /&gt;" Guid="1f67ae6a-0d50-4554-a28d-558c7851ad15" SearchSteps="Selector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NGetText.Target>
+                                    </uix:NGetText>
+                                    <If Condition="[not State.ToString.Equals(valuesPresent)]" sap:VirtualizedContainerService.HintSize="354,48" sap2010:WorkflowViewState.IdRef="If_6">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,243.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,158.66666666666666" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_11" ItemToAppend="State value is Incorrect" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,243.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,158.66666666666666" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_12" ItemToAppend="State value is Correct" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </ui:IfElseIfBlock.Then>
+                              </ui:IfElseIfBlock>
+                              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currentText.ToString.ToUpper.Equals(&quot;POSTAL CODE&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_6">
+                                <ui:IfElseIfBlock.Then>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,921.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NGetText DisplayName="Get Text 'Country'" sap:VirtualizedContainerService.HintSize="450,190.66666666666666" sap2010:WorkflowViewState.IdRef="NGetText_7" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" TextString="[valuesPresent]" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable DesignTimeRectangle="307, 661, 142, 32" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-POST_CODE1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-POST_CODE1' /&gt;" Guid="fbc9a032-f487-49c6-935b-75c43c43b51c" ImageBase64="" InformativeScreenshot="290dacde7e204e2c877a7827929080eb.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="34, 661, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtG_CITY_POSTCODE1_LABEL' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtG_CITY_POSTCODE1_LABEL' check:text='Postal Code/City' /&gt;" Guid="ed13ae13-8653-4e01-a648-b6c325755ed7" SearchSteps="Selector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NGetText.Target>
+                                    </uix:NGetText>
+                                    <If Condition="[not PostalCode.ToString.Equals(valuesPresent)]" DisplayName="If if found added to list" sap:VirtualizedContainerService.HintSize="450,646" sap2010:WorkflowViewState.IdRef="If_7">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_13" ItemToAppend="Postal Code value is Incorrect" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_14" ItemToAppend="Postal Code value is Correct" List="[statusList]" />
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </ui:IfElseIfBlock.Then>
+                              </ui:IfElseIfBlock>
+                            </sc:BindingList>
+                          </ui:IfElseIfV2.ElseIfs>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:IfElseIfV2.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,921.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NGetText DisplayName="Get Text 'Search term 1/2'" sap:VirtualizedContainerService.HintSize="450,190.66666666666666" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" TextString="[valuesPresent]" Version="V3">
+                                <uix:NGetText.Target>
+                                  <uix:TargetAnchorable DesignTimeRectangle="307, 525, 272, 32" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-SORT1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/txtADDR1_DATA-SORT1' /&gt;" Guid="bdfe7580-27f3-48ba-a8b2-b1f332f3ea63" ImageBase64="" InformativeScreenshot="50f6f6bbc7f462179d525fc943e9a274.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="34, 525, 272, 32" ElementType="Text" FullSelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-SORT1' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subADDRESS:SAPLSZA1:0300/subCOUNTRY_SCREEN:SAPLSZA1:0301/lblADDR1_DATA-SORT1' check:text='Search term 1/2' /&gt;" Guid="a05d497a-dd14-4e31-8d77-5f13744778ba" SearchSteps="Selector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NGetText.Target>
+                              </uix:NGetText>
+                              <If Condition="[not SearchTerm.ToString.Equals(valuesPresent)]" sap:VirtualizedContainerService.HintSize="450,646" sap2010:WorkflowViewState.IdRef="If_1">
+                                <If.Then>
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemToAppend="House Term is Incorrect" List="[statusList]" />
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,157.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_2" ItemToAppend="House Term is Correct" List="[statusList]" />
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                            </Sequence>
+                          </ui:IfElseIfV2.Then>
+                        </ui:IfElseIfV2>
+                        <Assign sap:VirtualizedContainerService.HintSize="546,107.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[finalStatus]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[String.Join(",",statusList)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ForEach>
+                <Assign DisplayName="Assign-updating the vendor Status" sap:VirtualizedContainerService.HintSize="1000,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[Status]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[finalStatus]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Button Cancel (F12)'" sap:VirtualizedContainerService.HintSize="1000,221.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fd21ccce-761f-47ca-a9c2-8b8646dcc16d" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="464, 69, 39, 39" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[12]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[12]' /&gt;" Guid="158c4881-1548-4bd4-b5a9-f53211f6076c" ImageBase64="" InformativeScreenshot="4a3f9042bcd894ca7d7feac252d63da3.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Display Vendor: Address' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="425, 69, 39, 39" ElementType="Button" FullSelectorArgument="&lt;sap id='tbar[0]/btn[15]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[15]' /&gt;" Guid="60f90c93-1db2-4305-b898-c5112c44a847" SearchSteps="Selector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="-11, -11, 1942, 1030" FilePath="C:\Program Files (x86)\SAP\FrontEnd\SapGui\saplogon.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIKSURBVGhD7ZhLSwJRGIaNVv2OFhH9A3OhNUVtgpb9hMBKXZWl2KJVi+7RzaAiNZ0uELXIxURhLlqUtXDZKgq6gwTR4us7EyM2DnO6OHM4cYRnK+/z+c6r6ACAKp4RAqwRAqwRAqwRAqwRAqz5HwJNQ3IXssYbzSG5WxMYRYAj3pFdFKjnVWBXCm3WlVaIJ4EMuTzJzZsAqc22FJZrtfC8CaSl8Gdtvgjk8/ma9sjWlGcwBSwwCKqHXD6NtWnQh1cFrm/vognl8iESOwG7CK4eQ+fIDgokjQLrwdqUX17D8VR4A7vZUHLQEY6BeyBuFLiUjL7zemwVuH0sQOzgFCTfDLj8URRIGIUmFHfeKHQptgncPb/Cyl4WWn3T0Ni3AO7+uNkzUNx5GrYJbCpnIPVOgrNnDsPHzMJ/2XkalgvcYG1W9rPg8U7g5RfNLm+48zQsFyDh2wIz0Ng7XxLeUMBw52lYJkA6T2rj6SGXJ53XalMW3nTnaTjuX17Xj3JX+dThBaSU84oxnlSgxY+X9y3RHljTnafhwFc1XmjMiR+x0ztbOfBhdQWW1a03qQ1152mov4XcweSoO7ih7nLFwPcj37QmtfnWztNg9WPu2ztPg4XAj3aehp0Cv9p5GnYK/Grnadgh8Kedp6EJWPe3SkgetuLyGqoAzwgB1ggB1ggB1ggB1ggB1nAuAFUfxIfXPEuuE9oAAAAASUVORK5CYII=" InformativeScreenshot="bf36275318435738adc984d2e2f11893.png" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='SAP Easy Access' /&gt;" Title="SAP Easy Access" />
+          </uix:NApplicationCard.TargetApp>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </uix:NApplicationCard>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1100.6666666666667,22.666666666666668" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Assign DisplayName="Assign-The Status Vendors " sap:VirtualizedContainerService.HintSize="434,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Status]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["Validation Of Vendor Record UnSuccessfull"]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:LogMessage DisplayName="Log Message-Validate vendor Details" sap:VirtualizedContainerService.HintSize="1134.6666666666667,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Validate Vendor Details Ended &quot;]" />
+  </Sequence>
+</Activity>
